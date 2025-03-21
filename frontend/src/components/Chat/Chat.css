@@ -685,8 +685,8 @@
 .chat-input::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 24px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 
 .chat-input::-webkit-scrollbar-thumb {
