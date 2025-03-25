@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { ChatContext } from "../../context/ChatContext";
 import audioService from "../../services/audioService";
 import { AuthContext } from "../../context/AuthContext";
+import ChatResponseDisplay from "./DataVisualization"; // Import the new component
 
 const ChatMessage = ({ message }) => {
-  const { content, sender, timestamp, id } = message;
+  const { content, sender, timestamp, id , dataframe, visualization} = message;
   const [copied, setCopied] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const { regenerateResponse, provideMessageFeedback, isLoading } =
@@ -134,7 +135,16 @@ const ChatMessage = ({ message }) => {
         className="message-content"
         data-feedback={message.feedback || "none"}
       >
-        <div className="message-text">{content}</div>
+        {/* Conditional rendering based on AI or user message */}
+        {isAiMessage ? (
+          <ChatResponseDisplay 
+            message={content} 
+            dataframe={dataframe} 
+            visualization={visualization} 
+          />
+        ) : (
+          <div className="message-text">{content}</div>
+        )}
         <div className="message-footer">
           <div className="message-timestamp">
             {new Date(timestamp).toLocaleTimeString()}
@@ -303,6 +313,7 @@ const ChatMessage = ({ message }) => {
               </button>
             </div>
           )}
+          
         </div>
       </div>
     </div>

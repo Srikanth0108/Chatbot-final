@@ -351,6 +351,8 @@ export const ChatProvider = ({ children }) => {
         sender: "ai",
         timestamp: new Date().toISOString(),
         language: preferredLanguage,
+        dataframe: response.dataframe,
+        visualization: response.visualization
       };
 
       const finalMessages = [...updatedMessages, aiMessage];
@@ -537,6 +539,8 @@ export const ChatProvider = ({ children }) => {
         sender: "ai",
         timestamp: new Date().toISOString(),
         language: preferredLanguage,
+        dataframe: response.dataframe,
+        visualization: response.visualization
       };
 
       const finalMessages = [...updatedMessages, newAiMessage];

@@ -29,8 +29,14 @@ export const sendChatMessage = async (
       },
       { signal }
     ); // Pass the AbortController signal
+    const result = {
+      message: response.data.message,
+      dataframe: response.data.dataframe || null,
+      visualization: response.data.visualization ? 
+          JSON.parse(response.data.visualization) : null
+  };
 
-    return response.data;
+  return result;
   } catch (error) {
     console.error("Error sending message:", error);
     throw error;
